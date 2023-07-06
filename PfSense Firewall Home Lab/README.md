@@ -10,5 +10,11 @@ To achieve this, I utilized a feature called LAN Segments in VMware Workstation.
 
 Consequently, I took on the responsibility of assigning IP addresses to the VMs connected to each LAN segment by configuring static IPs. If I wished to connect multiple LAN segments together, I needed a virtual machine capable of routing traffic between the LAN segments.
 
+Note:  I will add a Router VM( windows , or cisco or any other virtual machine in the future for routing)
+
 Here's a breakdown of how I successfully established multiple "named" LAN segments within VMware Workstation and enabled routing between them using a VM running pfSense, an open-source firewall.
+
+PF Sense admin portal 
+
+![Alt text](image-2.png)
 
