@@ -1,3 +1,3 @@
-VMware Workstation Labs
+My VMware Workstation Labs
 
-Welcome to the VMware Workstation Labs! This repository is designed to help you create a virtualized learning environment for home labs, tutorials, and testing various aspects of Windows domain server environments, firewalls, routing, and more. Whether you are an IT professional, a student, or an enthusiast, these labs will provide you with hands-on experience and a safe space to experiment with different technologies.
+Welcome to my VMware Workstation Labs! This repository is created to facilitate home labs, tutorials, and testing of Windows domain server environments, firewalls, routing, and more. As an IT enthusiast, I have designed these labs to provide hands-on experience and a secure environment for experimenting with different technologies.
