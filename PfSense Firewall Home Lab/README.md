@@ -6,7 +6,7 @@ I had a desire to establish a virtual lab environment in my home that would repl
 
 To achieve this, I utilized a feature called LAN Segments in VMware Workstation. LAN Segments proved to be an excellent tool for creating private virtual networks for various purposes. However, it's important to note that Workstation's DHCP features cannot be used with LAN Segments.
 
-![Alt text](v.png)
+![Alt text](image-1.png)
 
 Consequently, I took on the responsibility of assigning IP addresses to the VMs connected to each LAN segment by configuring static IPs. If I wished to connect multiple LAN segments together, I needed a virtual machine capable of routing traffic between the LAN segments.
 
