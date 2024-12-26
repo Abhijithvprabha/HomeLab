@@ -6,6 +6,8 @@ This project outlines the creation of a homelab environment to simulate a real-w
 
 This project is designed for IT professionals and enthusiasts seeking hands-on experience in managing enterprise-grade systems.
 
+![Networkdiagram](image.png)
+
 ---
 
 ## Objectives
