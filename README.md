@@ -76,7 +76,7 @@ This project is designed for IT professionals and enthusiasts seeking hands-on e
    - Check the initial synchronization logs to ensure all objects (users, groups) are synced successfully to the azure domain (vegas-it.com).
    - Use the Microsoft Entra admin center to confirm that the synced accounts are appearing correctly.
 
-    ![alt text](images/syncstatus.png)
+    ![alt text](images/syncstatus.png) 
 
 5. **Enable Hybrid Features**:
    - Set up Seamless Single Sign-On by enabling the feature in Azure Entra Connect and configuring it in the local AD.
