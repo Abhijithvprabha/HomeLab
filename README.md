@@ -46,9 +46,7 @@ This project is designed for IT professionals and enthusiasts seeking hands-on e
 - Created multiple user accounts with the custom domain for testing email and collaboration tools.
 
 ### 5. **Integration with Microsoft Entra ID (Planned)**
-### 5. **Integration with Microsoft Entra ID (Planned)**
 
-```markdown
 - Plan to integrate the on-premises Active Directory with **Microsoft Entra ID** using **Azure Entra Connect**.
 - The integration will enable:
   - **Hybrid Identity Management**: Synchronizing users and groups between on-premises AD and Entra ID.
