@@ -65,6 +65,7 @@ This project is designed for IT professionals and enthusiasts seeking hands-on e
 2. **Install Azure Entra Connect**:
    - Download the latest version of Azure Entra Connect from Microsoft’s official site.
    - Install it on a server that is joined to the vegas-it.local domain and meets the prerequisites.
+   ![alt text](images/syncstatus.png)
 
 3. **Configure Azure Entra Connect**:
    - Select the **Custom Installation** option for advanced configuration.
