@@ -46,13 +46,59 @@ This project is designed for IT professionals and enthusiasts seeking hands-on e
 - Created multiple user accounts with the custom domain for testing email and collaboration tools.
 
 ### 5. **Integration with Microsoft Entra ID (Planned)**
+### 5. **Integration with Microsoft Entra ID (Planned)**
+
+```markdown
 - Plan to integrate the on-premises Active Directory with **Microsoft Entra ID** using **Azure Entra Connect**.
 - The integration will enable:
   - **Hybrid Identity Management**: Synchronizing users and groups between on-premises AD and Entra ID.
-  - Single Sign-On (SSO) capabilities for Office 365 and other cloud-based applications.
-  - Multi-Factor Authentication (MFA) for enhanced security.
+  - **Seamless Single Sign-On (SSO)**: Providing users with streamlined access to both on-premises and cloud resources.
+  - **Password Hash Synchronization**: Ensuring users can log in with the same credentials across environments.
+  - **Federation with Office 365**: Facilitating secure and seamless user access to Microsoft 365 applications.
+  - **Multi-Factor Authentication (MFA)**: Enhancing security by enforcing MFA policies for cloud applications.
 
----
+#### Steps for Integration:
+1. **Prepare the Environment**:
+   - Verify the on-premises Active Directory (vegas-it.local) is healthy and free of replication errors.
+   - Ensure the domain **vegas-it.com** is verified in Microsoft Entra ID.
+   - Create and configure a dedicated service account in the local AD for Azure Entra Connect.
+   - Open necessary firewall ports for Azure Entra Connect to communicate with Microsoft Entra ID.
+
+2. **Install Azure Entra Connect**:
+   - Download the latest version of Azure Entra Connect from Microsoft’s official site.
+   - Install it on a server that is joined to the vegas-it.local domain and meets the prerequisites.
+
+3. **Configure Azure Entra Connect**:
+   - Select the **Custom Installation** option for advanced configuration.
+   - Choose the **Password Hash Synchronization** or **Pass-Through Authentication** method.
+   - Specify the service account created earlier for synchronization.
+   - Define the Organizational Units (OUs) to sync, including users and groups.
+
+4. **Verify Synchronization**:
+   - Check the initial synchronization logs to ensure all objects (users, groups) are synced successfully to the azure domain (vegas-it.com).
+   - Use the Microsoft Entra admin center to confirm that the synced accounts are appearing correctly.
+
+5. **Enable Hybrid Features**:
+   - Set up Seamless Single Sign-On by enabling the feature in Azure Entra Connect and configuring it in the local AD.
+   - Test SSO by logging in with a synchronized user account.
+
+6. **Enhance Security**:
+   - Configure **Conditional Access Policies** to require MFA for specific applications or users.
+   - Enable **Self-Service Password Reset (SSPR)** for synced users.
+
+7. **Test and Monitor**:
+   - Test authentication for both cloud and on-premises applications.
+   - Use Azure Entra Connect Health for monitoring synchronization status and addressing potential issues.
+
+8. **Documentation and Maintenance**:
+   - Document the setup process and configurations for future reference.
+   - Schedule periodic reviews to ensure synchronization remains functional and up to date.
+
+#### Future Goals:
+- Explore **Self-Service Password Reset (SSPR)** for users.
+- Integrate other SaaS applications with Microsoft Entra ID for centralized identity management.
+- Automate provisioning and deprovisioning workflows using Entra ID features.
+
 
 ## Future Enhancements
 
