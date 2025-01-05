@@ -78,6 +78,92 @@ This project is designed for IT professionals and enthusiasts seeking hands-on e
 
     ![alt text](images/syncstatus.png) 
 
+# Error: Cannot Proceed Because the Sync Service Isn't Running
+
+This document addresses the error encountered when the synchronization process between on-premises Active Directory and Microsoft Entra ID (Azure AD) fails due to the **ADSync service** not running. Follow these steps to resolve the issue.
+
+## **Error Message**
+```
+Cannot proceed because the sync service isn't running. Start the ADSync service and restart Azure AD Connect.
+```
+
+---
+
+## **Steps to Resolve**
+
+### **1. Verify the ADSync Service Status**
+1. Open the **Services** console:
+   - Press `Win + R`, type `services.msc`, and press Enter.
+2. Locate the service named **Microsoft Azure AD Sync**.
+3. Check the status:
+   - If the service is **stopped**, right-click it and select **Start**.
+   - If the service fails to start, proceed to Step 5 to troubleshoot further.
+
+---
+
+### **2. Restart the Azure AD Connect Tool**
+1. Open **Azure AD Connect** from the Start menu.
+2. Choose the **Synchronize Now** option to trigger a manual synchronization once the service is running.
+
+![alt text](images/azsyncservice.png)
+---
+### **3. Check Event Viewer Logs**
+1. Open **Event Viewer**:
+   - Press `Win + R`, type `eventvwr`, and press Enter.
+2. Navigate to the following sections:
+   - **Windows Logs > Application**
+   - **Windows Logs > System**
+3. Look for errors related to **ADSync** or **Azure AD Connect** to identify the root cause of the issue.
+
+---
+
+### **4. Verify Database Connectivity**
+The ADSync service uses a local SQL database to function.
+1. Ensure the SQL Server (LocalDB) instance used by ADSync is running:
+   - Look for services like `MSSQL$MICROSOFT##SSEE` or similar in the **Services** console.
+2. If this SQL service is stopped, start it and retry starting the ADSync service.
+
+---
+
+### **5. Reconfigure Azure AD Connect**
+If the issue persists:
+1. Open **Azure AD Connect**.
+2. Rerun the configuration wizard.
+3. Validate the credentials for the service account used by Azure AD Connect.
+
+---
+
+### **6. Restart the Server**
+As a last resort:
+1. Restart the server hosting Azure AD Connect.
+2. After rebooting, check the status of the ADSync service and retry the synchronization.
+
+---
+
+## **Common Causes**
+- **Service Account Issues**: The account used by Azure AD Connect might have invalid credentials.
+- **Database Corruption**: The SQL database used by ADSync may be corrupt or inaccessible.
+- **Software Updates**: Recent updates may have disrupted the service.
+- **Insufficient Resources**: The server might lack the necessary resources to run the service.
+
+---
+
+## **Event Viewer Log Example**
+```
+Event ID: 528
+Source: ADSync
+Description: The Microsoft Azure AD Sync service could not start due to insufficient permissions.
+```
+
+---
+
+## **References**
+- [Microsoft Documentation: Troubleshooting Azure AD Connect](https://learn.microsoft.com/en-us/azure/active-directory/hybrid/tshoot-connect-sync-errors)
+- [SQL LocalDB Troubleshooting Guide](https://learn.microsoft.com/en-us/sql/database-engine/configure-windows/sql-server-express-localdb?view=sql-server-ver15)
+
+
+
+
 5. **Enable Hybrid Features**:
    - Set up Seamless Single Sign-On by enabling the feature in Azure Entra Connect and configuring it in the local AD.
    - Test SSO by logging in with a synchronized user account.
