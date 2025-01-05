@@ -161,6 +161,89 @@ Description: The Microsoft Azure AD Sync service could not start due to insuffic
 - [Microsoft Documentation: Troubleshooting Azure AD Connect](https://learn.microsoft.com/en-us/azure/active-directory/hybrid/tshoot-connect-sync-errors)
 - [SQL LocalDB Troubleshooting Guide](https://learn.microsoft.com/en-us/sql/database-engine/configure-windows/sql-server-express-localdb?view=sql-server-ver15)
 
+### Preparing a Non-Routable Domain for Directory Synchronization
+
+When synchronizing your on-premises directory with Microsoft 365, you must have a verified domain in Microsoft Entra ID. Only User Principal Names (UPNs) associated with the on-premises Active Directory Domain Services (AD DS) domain are synchronized. However, UPNs with a non-routable domain, such as `.local` (e.g., `user@vegas-it.local`), are synchronized to an `.onmicrosoft.com` domain (e.g., `user@vegas-it.onmicrosoft.com`).
+
+If your environment uses a `.local` domain for user accounts in AD DS, it is recommended to change them to use a verified domain, such as `vegas-it.com`, to ensure proper synchronization with Microsoft 365.
+
+## What if I only have a `.local` on-premises domain?
+
+You can use Microsoft Entra Connect to synchronize your AD DS to the Microsoft Entra tenant of your Microsoft 365 tenant. However, Microsoft Entra Connect synchronizes only to verified domains. Microsoft Entra ID, which manages Microsoft 365 identities, requires the domain to be a valid Internet domain (e.g., `.com`, `.org`, `.net`).
+
+If your internal AD DS uses only a non-routable domain, such as `.local`, you can resolve this issue by:
+
+1. Changing your primary domain in on-premises AD DS.
+2. Adding one or more UPN suffixes.
+
+### Option 1: Change Your Primary Domain
+Change your primary domain to a domain you've verified in Microsoft 365, such as `vegas-it.com`. For example, users with the domain `vegas-it.local` would be updated to `vegas-it.com`. While effective, this process can be complex.
+
+### Option 2: Add UPN Suffixes and Update Users
+Register new UPN suffixes in AD DS to match the domain(s) verified in Microsoft 365. After registering the new suffix, update user UPNs to replace `.local` with the new domain (e.g., `user@vegas-it.local` becomes `user@vegas-it.com`).
+
+Once UPNs are updated, you can synchronize your on-premises AD DS with Microsoft 365.
+
+## Step-by-Step Guide
+
+### Step 1: Add the New UPN Suffix
+1. On the AD DS domain controller, open **Active Directory Domains and Trusts**:
+   - From Server Manager, select **Tools > Active Directory Domains and Trusts**.
+   - Alternatively, press `Win + R`, type `Domain.msc`, and press **Enter**.
+
+2. In the **Active Directory Domains and Trusts** window, right-click the root node and select **Properties**.
+
+3. On the **UPN Suffixes** tab:
+   - In the **Alternative UPN Suffixes** box, type the new UPN suffix, e.g., `vegas-it.com`.
+   - Click **Add** and then **Apply**.
+
+4. Click **OK** when done.
+
+### Step 2: Update UPN Suffix for Existing Users
+1. On the AD DS domain controller, open **Active Directory Users and Computers**:
+   - From Server Manager, select **Tools > Active Directory Users and Computers**.
+   - Alternatively, press `Win + R`, type `Dsa.msc`, and press **Enter**.
+
+2. Select a user account, right-click it, and choose **Properties**.
+
+3. On the **Account** tab:
+   - In the **User logon name** field, select the new UPN suffix from the dropdown (e.g., `@vegas-it.com`).
+   - Click **OK**.
+
+4. Repeat for all user accounts.
+
+### Step 3: Use PowerShell to Update Multiple Users
+For large environments, use PowerShell to update UPN suffixes in bulk:
+
+```powershell
+# Import Active Directory module
+Import-Module ActiveDirectory
+
+# Find all users with the .local suffix and update to .com
+Get-ADUser -Filter "UserPrincipalName -like '*@vegas-it.local'" -Properties UserPrincipalName | ForEach-Object {
+    $newUPN = $_.UserPrincipalName.Replace("@vegas-it.local", "@vegas-it.com")
+    Set-ADUser $_ -UserPrincipalName $newUPN
+}
+```
+
+This script finds all users with the `@vegas-it.local` suffix and updates their UPN to `@vegas-it.com`.
+
+### Step 4: Sync Changes to Microsoft Entra ID
+1. Open the **Azure AD Connect Synchronization Service**.
+2. Perform a manual sync:
+   ```powershell
+   # Import Azure AD Sync module
+   Import-Module ADSync
+
+   # Run a delta sync
+   Start-ADSyncSyncCycle -PolicyType Delta
+   ```
+
+3. Verify synchronization in the Microsoft Entra admin center.
+
+---
+
+By following these steps, you can successfully transition from a non-routable `.local` domain to a verified domain and ensure seamless directory synchronization with Microsoft 365.
 
 
 
