@@ -172,13 +172,13 @@ If the synchronization schedule is outdated or incorrect, you can manually trigg
 ### Steps to Force a Delta Sync
 Run the following PowerShell commands:
 
-# Load the Azure AD Sync module
+### Load the Azure AD Sync module
 Import-Module ADSync
 
-# Trigger a manual delta sync
+### Trigger a manual delta sync
 Start-ADSyncSyncCycle -PolicyType Delta
 
-# Verify the updated scheduler
+### Verify the updated scheduler
 Get-ADSyncScheduler
 
 
