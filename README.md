@@ -165,6 +165,23 @@ Description: The Microsoft Azure AD Sync service could not start due to insuffic
 
 ![alt text](<images/Microsoft Entradasync.png>)
 
+## Force a Synchronization to Update the Scheduler
+
+If the synchronization schedule is outdated or incorrect, you can manually trigger a delta sync to refresh the scheduler and recalculate the next sync time.
+
+### Steps to Force a Delta Sync
+Run the following PowerShell commands:
+
+# Load the Azure AD Sync module
+Import-Module ADSync
+
+# Trigger a manual delta sync
+Start-ADSyncSyncCycle -PolicyType Delta
+
+# Verify the updated scheduler
+Get-ADSyncScheduler
+
+
 # Preparing a Non-Routable Domain for Directory Synchronization
 
 When synchronizing your on-premises directory with Microsoft 365, you must have a verified domain in Microsoft Entra ID. Only User Principal Names (UPNs) associated with the on-premises Active Directory Domain Services (AD DS) domain are synchronized. However, UPNs with a non-routable domain, such as `.local` (e.g., `user@vegas-it.local`), are synchronized to an `.onmicrosoft.com` domain (e.g., `user@vegas-it.onmicrosoft.com`).
