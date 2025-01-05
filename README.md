@@ -161,6 +161,10 @@ Description: The Microsoft Azure AD Sync service could not start due to insuffic
 - [Microsoft Documentation: Troubleshooting Azure AD Connect](https://learn.microsoft.com/en-us/azure/active-directory/hybrid/tshoot-connect-sync-errors)
 - [SQL LocalDB Troubleshooting Guide](https://learn.microsoft.com/en-us/sql/database-engine/configure-windows/sql-server-express-localdb?view=sql-server-ver15)
 
+### Microsoft Entra Connect: ADSyncTools PowerShell Reference
+
+![alt text](<images/Microsoft Entradasync.png>)
+
 # Preparing a Non-Routable Domain for Directory Synchronization
 
 When synchronizing your on-premises directory with Microsoft 365, you must have a verified domain in Microsoft Entra ID. Only User Principal Names (UPNs) associated with the on-premises Active Directory Domain Services (AD DS) domain are synchronized. However, UPNs with a non-routable domain, such as `.local` (e.g., `user@vegas-it.local`), are synchronized to an `.onmicrosoft.com` domain (e.g., `user@vegas-it.onmicrosoft.com`).
