@@ -231,13 +231,18 @@ Once UPNs are updated, you can synchronize your on-premises AD DS with Microsoft
 
 replace @vegas-it.local with @vegas-IT.com in the UserPrincipalName for all users in your local domain.
 
+## Active Directory UPN Update Script
+
+This PowerShell script updates the UserPrincipalName (UPN) for users in Active Directory by replacing the local domain (`@vegas-it.local`) with the desired domain (`@vegas-IT.com`).
+
+## Script
+
+```powershell
 $LocalUsers = Get-ADUser -Filter "UserPrincipalName -like '*vegas-it.local'" -Properties userPrincipalName -ResultSetSize $null
 $LocalUsers | foreach {
     $newUpn = $_.UserPrincipalName.Replace("@vegas-it.local", "@vegas-IT.com")
     $_ | Set-ADUser -UserPrincipalName $newUpn
 }
-
-
 
 
 3. On the **Account** tab:
