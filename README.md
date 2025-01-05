@@ -227,6 +227,19 @@ Once UPNs are updated, you can synchronize your on-premises AD DS with Microsoft
 
 2. Select a user account, right-click it, and choose **Properties**.
 
+![alt text](images/changeallusersUPNsuffix.png)
+
+replace @vegas-it.local with @vegas-IT.com in the UserPrincipalName for all users in your local domain.
+
+$LocalUsers = Get-ADUser -Filter "UserPrincipalName -like '*vegas-it.local'" -Properties userPrincipalName -ResultSetSize $null
+$LocalUsers | foreach {
+    $newUpn = $_.UserPrincipalName.Replace("@vegas-it.local", "@vegas-IT.com")
+    $_ | Set-ADUser -UserPrincipalName $newUpn
+}
+
+
+
+
 3. On the **Account** tab:
    - In the **User logon name** field, select the new UPN suffix from the dropdown (e.g., `@vegas-it.com`).
    - Click **OK**.
