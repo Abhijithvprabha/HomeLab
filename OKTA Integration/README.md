@@ -111,5 +111,35 @@ This project integrates OKTA, Azure AD, and Office 365 to establish a robust IAM
 - [Azure AD Documentation](https://learn.microsoft.com/en-us/azure/active-directory/)
 - [Office 365 Integration Guide](https://learn.microsoft.com/en-us/microsoft-365/enterprise/)
 
-## License
-This project is licensed under the MIT License. See the LICENSE file for details.
+
+
+# Provision users into Microsoft Azure Active Directory
+
+# User Directories and the Cloud:
+
+Microsoft Active Directory (AD) plays a central role in coordinating identity and access management policies. AD typically serves as the "source of truth" for user identities and provides access control to on-premises resources such as networks, file servers, and web applications. When on-premises applications are integrated with Active Directory, users benefit from a seamless experience: they log in to their domain once and gain access to the appropriate resources. Administrators also maintain clear control over access permissions. This model has been widely adopted because it works effectively within LAN-based architectures, where applications are hosted on hardware inside the firewall. However, as enterprises increasingly shift to cloud-based applications, this approach faces limitations, necessitating a new solution.
+
+![alt text](<Sub_images/Local Network Diagram.png>)
+
+The shift to cloud applications has led to the proliferation of separate user stores, with each application maintaining its own user credentials. While manageable with one or two applications, this becomes unmanageable as more are adopted, leading to password sprawl and loss of administrative control. Deactivating accounts for departing employees becomes complex, with limited auditing or timely deprovisioning, further compounding the challenge.
+
+Okta’s cloud-based identity and access management service solves these problems with a single integration point that provides a highly available solution for all cloud
+and web-based application AD and LDAP integrations.
+
+Okta provides a simple directory integration solution for both cloud and on-premises web applications. Its Identity and Access Management service offers user authentication, provisioning, de-provisioning, and analytics. Okta’s directory integration is easy to set up, highly available, and supports thousands of applications through the Okta Application Network (OAN). Key components for AD integration include:
+
+• Okta Active Directory Agent: A lightweight agent that can be installed on anyWindows Server and is used to connect to on-premises Active Directory for user provisioning, deprovisioning, and authentication requests.
+• Okta Integrated Windows Authentication (IWA) Web Application: A lightweight web application that is installed on an Internet Information Services (IIS) and is used to authenticate domain users via Integrated Windows Authentication.
+• Okta Active Directory Password Sync Agent: A lightweight agent installed on your domain controllers that will automatically synchronize AD password changes, send to Okta, and keep your user’s AD passwords in sync with the apps they use.
+
+Okta’s directory Integration offers the following:
+• Simple and Secure Setup and Configuration
+• Real-time provisioning
+• Intelligent user synchronization
+• Just-in-time user provisioning
+• Robust delegated authentication
+• Integrated desktop single sign-on (SSO) (AD only)
+• Self service password reset support (AD only)
+• Security group-driven provisioning
+• Automated one-click deprovisioning
+• Single sign-on for directory authenticated apps
