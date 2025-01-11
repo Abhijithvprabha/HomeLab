@@ -1,6 +1,6 @@
 # OKTA Integration with Azure AD and Office 365
 
-This repository documents the process of integrating OKTA with Azure Active Directory (Azure AD), using Azure AD as the Identity and Access Management (IAM) solution. Additionally, it includes steps to deploy Single Sign-On (SSO) applications on the OKTA dashboard.
+This repository documents the process of integrating OKTA with Azure Active Directory(Entra ID) (Azure AD), Active Directory, using Azure AD as the Identity and Access Management (IAM) solution. Additionally, it includes steps to deploy Single Sign-On (SSO) applications on the OKTA dashboard.
 
 ## Overview
 
