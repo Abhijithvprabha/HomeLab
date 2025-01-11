@@ -132,14 +132,14 @@ Okta provides a simple directory integration solution for both cloud and on-prem
 • Okta Integrated Windows Authentication (IWA) Web Application: A lightweight web application that is installed on an Internet Information Services (IIS) and is used to authenticate domain users via Integrated Windows Authentication.
 • Okta Active Directory Password Sync Agent: A lightweight agent installed on your domain controllers that will automatically synchronize AD password changes, send to Okta, and keep your user’s AD passwords in sync with the apps they use.
 
-Okta’s directory Integration offers the following:
-• Simple and Secure Setup and Configuration
-• Real-time provisioning
-• Intelligent user synchronization
-• Just-in-time user provisioning
-• Robust delegated authentication
-• Integrated desktop single sign-on (SSO) (AD only)
-• Self service password reset support (AD only)
-• Security group-driven provisioning
-• Automated one-click deprovisioning
-• Single sign-on for directory authenticated apps
+1. Simple and Secure Setup and Configuration  
+2. Real-time Provisioning  
+3. Intelligent User Synchronization  
+4. Just-in-time User Provisioning  
+5. Robust Delegated Authentication  
+6. Integrated Desktop Single Sign-On (SSO) (AD Only)  
+7. Self-Service Password Reset Support (AD Only)  
+8. Security Group-Driven Provisioning  
+9. Automated One-Click Deprovisioning  
+10. Single Sign-On for Directory Authenticated Apps  
+
