@@ -97,6 +97,10 @@ The integration enables the synchronization of users, groups, and attributes fro
 - **Sync Password**: **Disabled**
   - Password management remains within **Active Directory**. **Okta** does not synchronize passwords with **Office 365**.
 
+  whole flow; 
+
+  ![alt text](<Sub_images/whole flow- user-group-onprem-ad-sybc-okta-.png>)
+
 ---
 
 ## Conclusion
