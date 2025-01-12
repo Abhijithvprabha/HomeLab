@@ -101,6 +101,8 @@ The integration enables the synchronization of users, groups, and attributes fro
 
   ![alt text](<Sub_images/whole flow- user-group-onprem-ad-sybc-okta-.png>)
 
+So, the app is assigned in Okta, but the license will be assigned to the same group in Azure AD.
+
 ---
 
 ## Conclusion
