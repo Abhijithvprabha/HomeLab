@@ -1,5 +1,8 @@
 # Active Directory (On-Premises) Integration with Okta
 
+
+![alt text](Sub_images/okta-onprem-azure-networkdiagram.png)
+
 This document outlines the process of integrating **on-premises Active Directory (AD)** with **Okta** to enable seamless **Identity and Access Management (IAM)** across hybrid environments. This integration allows for secure access to cloud applications while leveraging existing on-prem AD user credentials.
 
 ## Overview
