@@ -73,7 +73,10 @@ Okta provides a simple directory integration solution for both cloud and on-prem
 
 ## Integration Steps
 
-You can create a developer account with a company email or Microsoft account email you created earlier 
+You can create a developer account using a company email. I purchased a domain and hosted it on NameSilo, which offers email domain services for just $3. I used one of these email addresses to start a trial account. Note that it’s unlikely you’ll be able to complete this process using a personal email, such as Gmail.
+
+![alt text](Sub_images/Integrated_attributes_selection.png)
+
 
 ### 1. Configure OKTA
 1. Log in to your OKTA Admin Console.
