@@ -39,7 +39,6 @@ This project integrates OKTA, Azure AD, and Office 365 to establish a robust IAM
 
 ---
 
-# Provision users into Microsoft Azure Active Directory
 
 # User Directories and the Cloud:
 
@@ -88,77 +87,27 @@ I have installed it one of my member server / No need to install on the Domain C
 
 ![alt text](Sub_images/Integrated_attributes_selection.png)
 
+Directory Integrated 
 
-### 1. Configure OKTA
-1. Log in to your OKTA Admin Console.
-2. Navigate to **Applications** > **Applications**.
-3. Click **Create App Integration** and select **SAML 2.0**.
-4. Configure the following:
-   - **App Name**: Provide a name for the app (e.g., Office 365 SSO).
-   - **Single Sign-On URL**: Use the SAML endpoint from Azure AD.
-   - **Audience URI (SP Entity ID)**: Provide your Azure AD's Identifier.
+![alt text](Sub_images/oktaintegratedwithAD.png)
 
-### 2. Set Up Azure AD as an Identity Provider
-1. Log in to Azure Portal.
-2. Navigate to **Azure Active Directory** > **Enterprise Applications** > **+ New Application**.
-3. Search for **OKTA** or choose **Non-Gallery Application**.
-4. Configure the following:
-   - Upload the OKTA SAML metadata file.
-   - Set up attribute mappings for user provisioning.
+To enable user provisioning and deploy Office 365 on Okta, follow these steps:
 
-### 3. Enable User Provisioning
-1. **Create Security Groups in On-Premises AD**:
-   - Add a security group in your local Active Directory (e.g., `XYZ_App_License_Group`).
-   - Add users who need access to the specific application (e.g., Office 365) to this group.
-2. **Sync Groups to Azure AD**:
-   - Use Entra ID Connect to sync the created security group to Azure AD.
-   - Confirm the group appears in Azure AD under **Groups**.
-3. **Assign Licenses to Azure AD Group**:
-   - In the Azure Portal, go to **Azure Active Directory** > **Licenses** > **All Products**.
-   - Select the license you want to assign (e.g., Office 365 E3).
-   - Click **Assign** and choose the synced security group (e.g., `XYZ_App_License_Group`).
-   - Save and confirm that the license is applied to all users in the group.
-4. **Provision Application in OKTA**:
-   - Configure the application (e.g., Office 365) in OKTA to recognize the Azure AD group for provisioning.
-   - Test the configuration by ensuring users in the group gain appropriate access.
-
-### 4. Deploy Office 365 on OKTA Dashboard
-1. In OKTA Admin Console:
-   - Navigate to **Applications** > **Applications**.
-   - Search for **Office 365** and add it as an application.
-   - Configure SSO settings using the Azure AD SAML details.
-2. Test the integration by logging in to OKTA and accessing Office 365.
-
----
-
-## Testing and Validation
-- **User Authentication**: Ensure users can log in to OKTA using Azure AD credentials.
-- **SSO Access**: Verify seamless access to Office 365 and other configured applications.
-- **Group Policies**: Confirm role-based access is working as intended.
-- **License Provisioning**: Validate that group memberships in on-premises AD trigger license provisioning via Azure AD and OKTA.
-
----
-
-## Troubleshooting
-- **Provisioning Errors**: Check SCIM configurations in both OKTA and Azure AD.
-- **SAML Errors**: Validate endpoint URLs and certificate mappings.
-- **Sync Issues**: Ensure Azure AD Connect is configured correctly.
-- **License Provisioning Issues**: Confirm group memberships in on-premises AD and verify synchronization with Azure AD.
-
----
-
-## Future Enhancements
-- Add Multi-Factor Authentication (MFA) policies in OKTA for enhanced security.
-- Integrate additional cloud applications into OKTA.
-- Explore Conditional Access policies in Azure AD.
-
----
-
-## References
-- [OKTA Developer Documentation](https://developer.okta.com/)
-- [Azure AD Documentation](https://learn.microsoft.com/en-us/azure/active-directory/)
-- [Office 365 Integration Guide](https://learn.microsoft.com/en-us/microsoft-365/enterprise/)
-
-
-
+1. Enable User Provisioning:
+Create Security Groups in On-Premises AD:
+Create a security group in your local Active Directory (e.g., XYZ_App_License_Group).
+Add users who need access to the specific application (e.g., Office 365) to this group.
+Sync Groups to Okta:
+Use the Okta AD Agent to sync the created security group from Active Directory to Okta.
+Confirm the group appears in Okta under Groups after the sync is complete.
+Assign Licenses in Okta:
+In the Okta Admin Console, go to Applications > Applications.
+Find and select the Office 365 application.
+Assign appropriate licenses (e.g., Office 365) to the Okta group you created.
+2. Deploy Office 365 on Okta Dashboard:
+In the Okta Admin Console:
+Navigate to Applications > Applications.
+Search for Office 365 and add it as an application.
+Configure SSO settings using the SAML details provided by your Azure AD for Office 365.
+Test the integration by logging in to Okta and accessing Office 365.
 
