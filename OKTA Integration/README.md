@@ -75,6 +75,17 @@ Okta provides a simple directory integration solution for both cloud and on-prem
 
 You can create a developer account using a company email. I purchased a domain and hosted it on NameSilo, which offers email domain services for just $3. I used one of these email addresses to start a trial account. Note that it’s unlikely you’ll be able to complete this process using a personal email, such as Gmail.
 
+During installation, you simply provide your Okta URL and AD Administrator credentials. The Okta AD Agent then automatically creates a low-privileged, read-only integration account and securely establishes a connection to your Okta instance—no additional network or firewall configuration is required.
+
+The Okta AD Agent connects to Okta’s cloud service using an outbound SSL connection over port 443. This connection is refreshed every 30 seconds to ensure compatibility with existing firewalls or other security devices.
+
+As a general rule, if a user can log into the host machine with their AD credentials and access the internet via a browser, the Okta AD Agent will operate successfully without requiring any firewall changes.
+
+I have installed it one of my member server / No need to install on the Domain Controller. 
+
+![alt text](Sub_images/OKTA_connected.png)
+
+
 ![alt text](Sub_images/Integrated_attributes_selection.png)
 
 
