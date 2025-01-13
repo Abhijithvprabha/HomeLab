@@ -111,3 +111,5 @@ So, the app is assigned in Okta, but the license will be assigned to the same gr
 ## Conclusion
 
 By integrating **Okta** with **Active Directory**, you can manage user identities securely and efficiently, while leveraging **Okta's cloud platform** for Single Sign-On and license management. This approach ensures that user data is synchronized from **Active Directory** to **Okta**, while also simplifying access to **cloud applications** like **Office 365**.
+
+Cont..
