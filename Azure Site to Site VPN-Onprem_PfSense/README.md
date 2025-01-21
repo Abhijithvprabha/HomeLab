@@ -35,14 +35,14 @@ This solution connects your on-premises network to Azure using a secure VPN tunn
      - SKU: Basic (for homelab)
      - Virtual Network: Select your existing VNet.
      - Public IP: Create a new public IP for the gateway.
-   - Click **Create** and wait for the deployment to complete.
+   - Click **Create** and wait for the deployment to complete. 20-45 Minutes
 
 2. **Create a Local Network Gateway**:
    - Go to "Local Network Gateways" in the Azure portal.
    - Click **Create** and provide:
      - Name: `OnPremGateway`
      - IP Address: Public IP of your pfSense firewall.
-     - Address Space: `192.168.0.0/24` (your on-prem network).
+     - Address Space: `10.0.5.0/24` (your on-prem network).
    - Click **Create**.
 
 3. **Set Up a Connection**:
@@ -71,8 +71,8 @@ This solution connects your on-premises network to Azure using a secure VPN tunn
    - Go to the Phase 2 tab under IPsec.
    - Configure:
      - Mode: Tunnel IPv4
-     - Local Network: `192.168.0.0/24`
-     - Remote Network: `192.168.5.0/24`
+     - Local Network: `10.0.5.0/24`
+     - Remote Network: `public ip`
      - Protocol: ESP
      - Encryption: AES256, SHA256.
    - Save and apply the settings.
