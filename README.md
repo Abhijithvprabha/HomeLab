@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project outlines the creation of a homelab environment to simulate a real-world IT infrastructure for learning, testing, and experimentation. The setup includes network management, Windows Server deployment, email configuration with Exchange Server, custom domain integration with Office 365, and plans for Active Directory synchronization with Microsoft Entra ID (formerly Azure AD).
+This project details the development of a homelab environment designed to replicate a real-world IT infrastructure for learning, testing, and experimentation. The setup includes network management, Windows Server deployment, email configuration with Exchange Server, and custom domain integration with Office 365. Additionally, it incorporates Active Directory synchronization with Microsoft Entra ID (formerly Azure AD). Linux servers (RHEL, Ubuntu) are deployed with various services and monitored using Grafana, Prometheus, and Node Exporter for comprehensive performance tracking.
 
 This project is designed for IT professionals and enthusiasts seeking hands-on experience in managing enterprise-grade systems.
 
